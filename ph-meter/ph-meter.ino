@@ -27,7 +27,7 @@ void loop() {
  avgValue=0;
  for(int i=2;i<8;i++)
  avgValue+=buf[i];
- float pHVol=(float)avgValue*5.0/1024/6; // rumus pHVol
+ float pHVol=(float)avgValue*5.0*6/1024; // rumus pHVol
  float phValue = -5.70 * pHVol + 23.22; // rumus pHValue
  Serial.print("sensor ph = "); // menampilkan string sensor ph
  Serial.println(phValue); // menampilkan phValue
