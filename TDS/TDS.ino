@@ -3,7 +3,7 @@
 #define VREF 5.0                                                      // analog reference voltage(Volt) of the ADC
 #define SCOUNT  30                                                    // sum of sample point
 int analogBuffer[SCOUNT];                                             // store the analog value in the array, read from ADC
-int analogBufferTemp[SCOUNT];
+int analogBufferTemp[SCOUNT];                                         //Comment
 int analogBufferIndex = 0,copyIndex = 0;
 float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;
 unsigned long oldtime = 0;                                            // deklarasi waktu sebelumnya
