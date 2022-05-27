@@ -6,7 +6,7 @@ int analogBuffer[SCOUNT];                                             // store t
 int analogBufferTemp[SCOUNT];
 int analogBufferIndex = 0,copyIndex = 0;
 float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;
-unsigned long oldtime = 0;
+unsigned long oldtime = 0;                                            // deklarasi waktu sebelumnya
 unsigned long hitung = 0;
 int hitungCounting;
 int counter = 1; 
