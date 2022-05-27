@@ -1,7 +1,5 @@
-// testing
-
-#define OutRelay 3
-#define TdsSensorPin A1
+#define OutRelay 3                                                    // Pin 3 Output ke Relay
+#define TdsSensorPin A1                                               // Pin A1 sebagai input
 #define VREF 5.0                                                      // analog reference voltage(Volt) of the ADC
 #define SCOUNT  30                                                    // sum of sample point
 int analogBuffer[SCOUNT];                                             // store the analog value in the array, read from ADC
