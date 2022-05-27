@@ -5,7 +5,7 @@
 int analogBuffer[SCOUNT];                                             // store the analog value in the array, read from ADC
 int analogBufferTemp[SCOUNT];                                         //Comment1
 int analogBufferIndex = 0,copyIndex = 0;                              // Comment 2                              
-float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;
+float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;  // comment 3
 unsigned long oldtime = 0;                                            // deklarasi waktu sebelumnya
 unsigned long hitung = 0;
 int hitungCounting;
