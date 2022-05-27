@@ -3,14 +3,14 @@
 #define VREF 5.0                                                      // analog reference voltage(Volt) of the ADC
 #define SCOUNT  30                                                    // sum of sample point
 int analogBuffer[SCOUNT];                                             // store the analog value in the array, read from ADC
-int analogBufferTemp[SCOUNT];                                         //Comment1
-int analogBufferIndex = 0,copyIndex = 0;                              // Comment 2                              
-float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;  // comment 3
+int analogBufferTemp[SCOUNT];                                         
+int analogBufferIndex = 0,copyIndex = 0;                                                            
+float averageVoltage = 0,tdsValue = 0,temperature = 25, ECvalue = 0;  
 unsigned long oldtime = 0;                                            // deklarasi waktu sebelumnya
-unsigned long hitung = 0;                                             // comment 4
-int hitungCounting;
-int counter = 1; 
-float jumlah = 0;
+unsigned long hitung = 0;                                             // variabel selisih antara waktu sekarang dengan waktu sebelumnya (oldtime)
+int hitungCounting;                                                   // variabel penyimpanan counter inject AB Mix 
+int counter = 1;                                                      // variabel counter
+float jumlah = 0;                                                     // variabel banyaknya larutan AB Mix yang di larutkan kedalam air (ml)
 
 void setup() {
   // put your setup code here, to run once:
@@ -57,7 +57,7 @@ void loop() {
       Serial.println(ECvalue,0);                                          // print nilai variabel EC
    }
 
-   if(ECvalue <=2500)                                                     // pengkondisian untuk nilai EC kurang dari sama dengan 2900
+   if(ECvalue <=2800)                                                     // pengkondisian untuk nilai EC kurang dari sama dengan 2800
    {
      hitung = millis() - oldtime;                                         // variabel perhitungan waktu millis dengan set waktu yang sebelumnya (oldtime)
      if( hitung >= 15000)                                                 // pengkondisian variabel perhitungan waktu millist dan oldtime jika lebih dari sama dnegan 15000 ms (15s)
@@ -68,19 +68,19 @@ void loop() {
       digitalWrite(OutRelay, HIGH);                                       // menonaktifkan relay  
       Serial.println(" ");
       Serial.print("Inject AB mix ke : ");                                // print string
-      hitungCounting = counter++;
-      Serial.print(hitungCounting);                                       // counting inject AB Mix
-      jumlah = hitungCounting*1.74;
+      hitungCounting = counter++;                                         // menyimpan jumlah counter inject AB Mix
+      Serial.print(hitungCounting);                                       // print counting inject AB Mix
+      jumlah = hitungCounting*1.74;                                       // menghitung banyaknya larutan AB yang dimasukkan kedalam air (ml)     
       Serial.print(" ");
       Serial.print("Jumlah AB mix : ");                                   // menampilkan string Jumlah AB mix
       Serial.print(jumlah);                                               // menampilkan perhitungan jumlah
-      Serial.println("ml");
+      Serial.println("ml");                                             
       Serial.println(" ");
      }
    }
-   else if (ECvalue >= 2500)                                              // jika nilai EC diatas 2500, OutRelay ON
+   else if (ECvalue > 2800)                                              // jika nilai EC diatas 2500, OutRelay ON
    {
-    digitalWrite(OutRelay,HIGH);
+    digitalWrite(OutRelay,HIGH);                                         // menonaktifkan relay 
    }
 }
 int getMedianNum(int bArray[], int iFilterLen) // median filtering algorithm code
