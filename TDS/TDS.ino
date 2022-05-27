@@ -1,4 +1,5 @@
-#define OutRelay 3                                                    // Pin 3 Output ke Relay hhhhhhhhhhh
+#define OutRelay 3                                                    // Pin 3 Output ke Relay
+//tambahan bro
 #define TdsSensorPin A1                                               // Pin A1 sebagai input
 #define VREF 5.0                                                      // analog reference voltage(Volt) of the ADC
 #define SCOUNT  30                                                    // sum of sample point
